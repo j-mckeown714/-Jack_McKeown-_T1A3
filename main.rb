@@ -51,84 +51,18 @@ class Play
         puts "(V)ery Hard (5% chance of success, 50% earnings)"
         difficulty_input = valid_difficulty()
         return difficulty_input
-        #if difficulty_input == "E"e
+
 
     end
 
-    def valid_play_money(bank_balance)
+
+    def gamble(difficulty_choice)
+        bank_balance = 5000
         puts "How much money do you want to gamble?"
         gamble_money = gets.strip.to_f
         while gamble_money > bank_balance or bank_balance == 0 
             puts "You can't gamble more then you have"
         end
-        return gamble_money
-    end
-
-    def gamble(bank_balance, ga)
-       
-
-    end
-    
-
-end
-
-class Test
-    def initialize
-    end
-
-    def test
-        score = 0
-        puts "Welcome to Gamblers Education's Test."
-        puts "This test is to help indicate if you need to see profestional help for your gambling issues."
-        puts "Answer the question by typing a number between 0-5. 0 being you strongly don't identify and 5 being strongly identify."
-        puts "Do you spend more time or money than intended?"
-        input = gets.strip.to_i
-        score += input
-        puts score
-        puts "Do you argue with family and friends after gambling?"
-        input = gets.strip.to_i
-        score += input
-        puts score
-        puts "After losing at gambling, having an urge to return as soon as possible to win back losses?"
-        input = gets.strip.to_i
-        score += input
-        puts "Do you feel guilty or remorseful about gambling?"
-        input = gets.strip.to_i
-        score += input
-        puts "Do you borrow money or sell assets to gamble?"
-        input = gets.strip.to_i
-        score += input
-        puts "Do you miss work or other commitments to gamble?"
-        input = gets.strip.to_i
-        score += input
-        puts "Do you hide the extent of your gambling?"
-        input = gets.strip.to_i
-        score += input
-        puts score
-        if score <= 5
-            puts "Not critical. See an professtional if gambing abuse symtons worsen"
-        elsif score > 6 and score < 15
-            puts "Your showing symtons of gambling abuse. See attention from a gambling support professtional"
-        else
-            puts "Your showing strong symtoms of gambling addiction. See attention from a gambling support professtional"
-            
-        end
-    
-    end
-
-
-end
-
-
-bank_balance = 5000
-new_menu = Menu.new
-puts "Welome to Gamblers Education!"
-choice = new_menu.main_menu()
-while choice != "Q"
-    if choice == "P"
-        new_game = Play.new
-        difficulty_choice = new_game.difficulty
-        gamble_money = new_game.valid_play_money(bank_balance)
         if difficulty_choice == "E"
             random_number = rand(1..100)
             puts random_number
@@ -173,7 +107,74 @@ while choice != "Q"
                 bank_balance -= gamble_money
                 puts bank_balance
             end
+        
+       
+
+    end
+    
+
+end
+
+class Test
+    def initialize
+    end
+
+    
+
+
+    def test
+        score = 0
+        puts "Welcome to Gamblers Education's Test."
+        puts "This test is to help indicate if you need to see profestional help for your gambling issues."
+        puts "Answer the question by typing a number between 0-5. 0 being you strongly don't identify and 5 being strongly identify."
+        puts "Do you spend more time or money than intended?"
+        input = gets.strip.to_i
+        score += input
+        puts "Do you argue with family and friends after gambling?"
+        input = gets.strip.to_i
+        score += input
+        puts "After losing at gambling, having an urge to return as soon as possible to win back losses?"
+        input = gets.strip.to_i
+        score += input
+        puts "Do you feel guilty or remorseful about gambling?"
+        input = gets.strip.to_i
+        score += input
+        puts "Do you borrow money or sell assets to gamble?"
+        input = gets.strip.to_i
+        score += input
+        puts "Do you miss work or other commitments to gamble?"
+        input = gets.strip.to_i
+        score += input
+        puts "Do you hide the extent of your gambling?"
+        input = gets.strip.to_i
+        score += input
+        if score <= 5
+            puts "Not critical. See an professtional if gambing abuse symtons worsen"
+            puts ""
+        elsif score > 6 and score < 15
+            puts "Your showing symtons of gambling abuse. See attention from a gambling support professtional"
+            puts ""
+        else
+            puts "Your showing strong symtoms of gambling addiction. See attention from a gambling support professtional"
+            puts ""
+            
         end
+    
+    end
+
+
+end
+
+
+
+new_menu = Menu.new
+puts "Welome to Gamblers Education!"
+choice = new_menu.main_menu()
+while choice != "Q"
+    if choice == "P"
+        new_game = Play.new
+        difficulty_choice = new_game.difficulty
+        gamble = new_game.gamble(difficulty_choice)
     elsif choice == "I"
         new_menu.instructions()
     elsif choice == "T"
@@ -183,5 +184,5 @@ while choice != "Q"
     end
     choice = new_menu.main_menu()
     
-    
+end
 end
