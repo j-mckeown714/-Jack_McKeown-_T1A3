@@ -38,25 +38,49 @@ end
 
 class Play
     def initialize
+        @history = []
     end
 
     def valid_difficulty
         option = gets.chomp.upcase
-        while option != "E" and option != "M" and option != "H" and option != "V"
+        while option != "E" and option != "M" and option != "H" and option != "V" and option != "H"
             puts "Invalid Input"
             option = gets.chomp.upcase
         end
+        if option == "H"
+            history = past_plays()
+        
+        end
+        
         return option
     end
 
+
     def difficulty 
-        puts "Choose your difficulty"
+        puts "Choose your difficulty or history"
         puts "(E)asy (40% chnance of success, 5% earnings)"
         puts "(M)edium (20% chance of success, 20% earnings)"
         puts "(H)ard (10% chance of success, 40% earnings)"
         puts "(V)ery Hard (5% chance of success, 50% earnings)"
+        puts "(H)istory"
         difficulty_input = valid_difficulty()
         return difficulty_input
+
+
+    end
+
+    # def past_plays
+    #     @history.each {|bet| puts "#{bet[:gamble_money]} #{bet[:bank_balance]}"}
+    #     # return @history
+    #     puts @history
+    # end
+    def keep_playing
+        puts "Would you like to keep playing, (Y) or (N)? "
+        input = gets.chomp
+        if input == "Y"
+            difficulty_choice = difficulty()
+            gamble = gamble(difficulty_choice)
+        end
 
 
     end
@@ -77,11 +101,17 @@ class Play
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{bank_balance}"
                 puts "Your lucky, you only had a 40% chance of winning!"
+                @history.push(bet: "#{gamble_money}", bank_balance: "#{bank_balance}")
+                puts @history
+                play = keep_playing()
             else
                 bank_balance -= gamble_money
                 puts "you lost #{gamble_money}"
                 puts "Your bank balance is now $#{bank_balance}"
                 puts "Even on the easy level, you were disadvantaged to win with a 60% chance of losing."
+                @history.push(bet: "#{gamble_money}", bank_balance: "#{bank_balance}")
+                puts @history
+                play = keep_playing()
             end
         elsif difficulty_choice == "M"
             random_number = rand(1..100)
@@ -122,6 +152,9 @@ class Play
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{bank_balance}"
                 puts "Your lucky, you only had a 5% chance of winning!"
+
+        # elsif difficulty_choice == "H"
+        #     show = history()
             else
                 bank_balance -= gamble_money
                 puts "you lost #{gamble_money}"
@@ -205,7 +238,7 @@ class Test
         end
     
     end
-
+    
 
 end
 
@@ -226,8 +259,8 @@ while choice != "Q"
         new_test.test()
     elsif choice == "D"
         disclaimer = new_menu.disclaimer()
-    # elsif choice == "H"
-        # history = new_menu.history
+
+        history = new_menu.history
     
     end
     choice = new_menu.main_menu()
