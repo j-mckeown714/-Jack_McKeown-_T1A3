@@ -1,4 +1,6 @@
 require('colorize')
+require ('cli-colorize')
+require ('optics')
 
 class Menu
     def initialize
@@ -15,7 +17,9 @@ class Menu
     end
 
     def main_menu # Displays menu options and returns choosen option
+        puts Optics.italic
         puts "What would you like to do:?"
+        puts Optics.reset
         puts "(O)pening Message"
         puts "(P)lay"
         puts "(T)est"
@@ -255,7 +259,8 @@ end
 
 
 new_menu = Menu.new
-puts "Welome to Gamblers Education!"
+str = 'Welome '.bright.red.swap  + 'to'.bright.red.swap + ' Gamblers'.bright.red.swap  + ' Education!'.bright.red.swap
+puts str
 choice = new_menu.main_menu()
 while choice != "Q"
     if choice == "P"
