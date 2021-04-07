@@ -1,3 +1,5 @@
+require('colorize')
+
 class Menu
     def initialize
     end
@@ -60,12 +62,11 @@ class Play
 
 
     def difficulty 
-        puts "Choose your difficulty or history"
-        puts "(E)asy (40% chnance of success, 5% earnings)"
-        puts "(M)edium (20% chance of success, 20% earnings)"
-        puts "(H)ard (10% chance of success, 40% earnings)"
-        puts "(V)ery Hard (5% chance of success, 50% earnings)"
-        puts "(H)istory"
+        puts "Choose your difficulty"
+        puts "(E)asy".green
+        puts "(M)edium".yellow
+        puts "(H)ard".light_red
+        puts "(V)ery Hard".red
         difficulty_input = valid_difficulty()
         return difficulty_input
 
@@ -74,7 +75,7 @@ class Play
 
     def past_plays
         @history.each do |bet| 
-            puts " Bet: #{bet[:bet]}, Bank Balance: #{bet[:balance]}"
+            puts "Bet: #{bet[:bet]}, Bank Balance: #{bet[:balance]}"
         end
     end
 
