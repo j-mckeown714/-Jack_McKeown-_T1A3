@@ -17,13 +17,6 @@ class Play
         return option
     end
 
-    def money
-        puts "How much money do you want in your gambling account?"
-        @bank_balance = gets.chomp.to_f
-        return @bank_balance
-    end
-
-
 
     def difficulty 
         puts "Choose your difficulty"
@@ -35,6 +28,13 @@ class Play
         return difficulty_input
 
 
+    end
+
+
+    def money
+        puts "How much money do you want in your gambling account?"
+        @bank_balance = gets.chomp.to_f
+        return @bank_balance
     end
 
     def past_plays
