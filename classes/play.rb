@@ -57,10 +57,26 @@ class Play
         end
     end
 
-    def calculate(gamble_money)
+    def easy_win_calculate(gamble_money)
         sum = gamble_money * 1.05
         return sum
 
+    end
+
+    def medium_win_calculate(gamble_money)
+        sum = gamble_money * 1.2
+        return sum
+        
+    end
+
+    def hard_win_calculate(gamble_money)
+        sum = gamble_money * 1.4
+        return sum        
+    end
+
+    def very_hard_win_calculate(gamble_money)
+        sum = gamble_money * 1.5
+        return sum        
     end
 
     def gamble(difficulty_choice)
@@ -73,7 +89,7 @@ class Play
         if difficulty_choice == "E"
             random_number = rand(1..100)
             if random_number <= 40
-                win = calculate(gamble_money)
+                win = easy_win_calculate(gamble_money)
                 @bank_balance += win
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{@bank_balance}"
@@ -96,7 +112,7 @@ class Play
             random_number = rand(1..100)
             puts random_number
             if random_number <= 20
-                win = gamble_money * 1.20
+                win = medium_win_calculate(gamble_money)
                 @bank_balance += win
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{@bank_balance}"
@@ -111,7 +127,7 @@ class Play
             random_number = rand(1..100)
             puts random_number
             if random_number <= 10
-                win = gamble_money * 1.40
+                win = hard_win_calculate(gamble_money)
                 @bank_balance += win
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{@bank_balance}"
@@ -126,7 +142,7 @@ class Play
             random_number = rand(1..100)
             puts random_number
             if random_number <= 5
-                win = gamble_money * 1.5
+                win = very_hard_win_calculate(gamble_money)
                 @bank_balance += win
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{@bank_balance}"
