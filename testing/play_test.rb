@@ -9,9 +9,12 @@ class PlayTest < Test::Unit::TestCase
 end
 
 class PlayTest < Test::Unit::TestCase
-    def test_valid_difficulty
+    def test_easy_win_money
         play = Play.new()
-        assert_equal(play.valid_difficulty)
+        gamble_money = 50
+        y= 1.05
+        expected_output = 52.5
+        assert_equal(expected_output, play.calculate(gamble_money))
     end
 end
 

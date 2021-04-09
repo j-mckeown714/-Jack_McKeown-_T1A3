@@ -57,6 +57,12 @@ class Play
         end
     end
 
+    def calculate(gamble_money)
+        sum = gamble_money * 1.05
+        return sum
+
+    end
+
     def gamble(difficulty_choice)
         
         puts "How much money do you want to gamble?"
@@ -67,7 +73,7 @@ class Play
         if difficulty_choice == "E"
             random_number = rand(1..100)
             if random_number <= 40
-                win = gamble_money * 1.05
+                win = calculate(gamble_money)
                 @bank_balance += win
                 puts "You won #{win}!"
                 puts "Your bank balance is now $#{@bank_balance}"
