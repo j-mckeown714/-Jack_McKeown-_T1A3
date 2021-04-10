@@ -8,18 +8,16 @@ class Menu
     end
     
     def get_input
-        @option = gets.chomp.upcase
+        @option = STDIN.gets.chomp.upcase
         return @option
-
     end
 
-    def menu_options(get_input) # Gets valid menu option
+    def menu_options(get_input) # gets valid menu option
         while @option != "O" and @option != "P" and @option != "Q" and @option != "T" and @option != "D"
             puts "Invalid Input"
             get_input()
         end
         return @option
-
     end
 
     def main_menu # Displays menu options and returns choosen option

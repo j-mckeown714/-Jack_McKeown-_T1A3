@@ -9,10 +9,10 @@ class Play
     end
 
     def valid_difficulty
-        option = gets.chomp.upcase
+        option = STDIN.gets.chomp.upcase
         while option != "E" and option != "M" and option != "H" and option != "V" 
             puts "Invalid Input"
-            option = gets.chomp.upcase
+            option = STDIN.gets.chomp.upcase
         end
         return option
     end
@@ -26,17 +26,15 @@ class Play
         puts "(V)ery Hard".red
         difficulty_input = valid_difficulty()
         return difficulty_input
-
-
     end
 
 
     def money
         puts "How much money do you want in your gambling account?"
-        balance = gets.chomp.to_f
+        balance = STDIN.gets.chomp.to_f
         while balance <= 0
             puts "Can't be 0 or a  negitive number, input again"
-            balance = gets.chomp.to_f
+            balance = STDIN.gets.chomp.to_f
         end
         @bank_balance = balance
         return @bank_balance
@@ -52,14 +50,14 @@ class Play
 
     def keep_playing
         puts "Would you like to keep playing, (Y) or (N)? "
-        input = gets.chomp.upcase
+        input = STDIN.gets.chomp.upcase
         if input == "Y"
             difficulty_choice = difficulty()
             gamble = gamble(difficulty_choice)
         else
-            puts "Betting History:"
+            str = 'Betting '.bright.yellow  + 'History:'.bright.yellow
+            puts str
             past_plays()
-            # past_plays()
         end
     end
 
@@ -109,12 +107,12 @@ class Play
     def gamble(difficulty_choice)
         
         puts "How much money do you want to gamble?"
-        gamble_money = gets.strip.to_f
+        gamble_money = STDIN.gets.strip.to_f
         while gamble_money > @bank_balance or @bank_balance == 0 or gamble_money <=0
             # puts "Bet can't be equal or less then 0"
             puts "You can't gamble more then you have and the bet has to be greater then 0"
             puts "How much money do you want to gamble?"
-        gamble_money = gets.strip.to_f
+        gamble_money = STDIN.gets.strip.to_f
         end
 
         if difficulty_choice == "E"

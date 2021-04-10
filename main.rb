@@ -5,9 +5,12 @@ require_relative 'classes/menu'
 require_relative 'classes/play'
 require_relative 'classes/test'
 
-
+name = ARGV[0]
+puts Optics.italic
+puts "Hello #{name}".yellow
+puts Optics.reset
 new_menu = Menu.new
-str = 'Welome '.bright.red.swap  + 'to'.bright.red.swap + ' Gamblers'.bright.red.swap  + ' Education!'.bright.red.swap
+str = 'Welome '.bright.red.swap  +  'to'.bright.red.swap + ' Gamblers'.bright.red.swap  + ' Education!'.bright.red.swap
 puts str
 choice = new_menu.main_menu()
 while choice != "Q"
@@ -22,12 +25,7 @@ while choice != "Q"
         new_test = Test.new
         new_test.test()
     elsif choice == "D"
-        disclaimer = new_menu.disclaimer()
-
-
-    
+        disclaimer = new_menu.disclaimer()    
     end
     choice = new_menu.main_menu()
-    
 end
-

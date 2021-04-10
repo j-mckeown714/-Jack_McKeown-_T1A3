@@ -7,10 +7,10 @@ class Test
     end
 
     def valid_test_input
-        input = gets.strip.to_i
+        input = STDIN.gets.strip.to_i
         while input != 0 and input != 1 and input != 2 and input != 3 and input != 4 and input != 5
             puts "Invalid input, try again"
-            input = gets.strip.to_i
+            input = STDIN.gets.strip.to_i
         end
         return input
     end
@@ -18,6 +18,9 @@ class Test
 
     def test()
         score = 0
+        puts Optics.italic
+        puts "Welcome to Gamblers Education's Test.".yellow
+        puts Optics.reset
         puts "Welcome to Gamblers Education's Test."
         puts "This test is to help indicate if you need to see profestional help for your gambling issues."
         puts "Answer the question by typing a number between 0-5. 0 being you strongly don't identify and 5 being strongly identify."
@@ -58,19 +61,15 @@ class Test
         input = valid_test_input()
         score += input
 
-        if score <= 10
+        if score <= 17
             puts "Not critical. See an professtional if gambing abuse symtons worsen"
             puts ""
-        elsif score > 11 and score < 18
+        elsif score > 18 and score < 25
             puts "Your showing symtons of gambling abuse. See attention from a gambling support professtional"
             puts ""
         else
             puts "Your showing strong symtoms of gambling addiction. See attention from a gambling support professtional"
-            puts ""
-            
+            puts "" 
         end
-    
     end
-    
-
 end
