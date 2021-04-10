@@ -91,20 +91,22 @@ class Play
             if random_number <= 40
                 win = easy_win_calculate(gamble_money)
                 @bank_balance += win
-                puts "You won #{win}!"
+                puts Optics.bold
+                puts "You won #{win}!".green
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "Your lucky, you only had a 40% chance of winning!"
                 @history.push(bet: gamble_money, balance: @bank_balance)
-                puts @history
                 play = keep_playing()
-                @history.each {|bet| puts "#{bet[:gamble_money]} #{bet[:@bank_balance]}"}
+                # @history.each {|bet| puts "#{bet[:gamble_money]} #{bet[:@bank_balance]}"}
             else
                 @bank_balance -= gamble_money
-                puts "you lost #{gamble_money}"
+                puts Optics.bold
+                puts "you lost $#{gamble_money}".red
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "Even on the easy level, you were disadvantaged to win with a 60% chance of losing."
                 @history.push(bet: gamble_money, balance: @bank_balance)
-                puts @history
                 play = keep_playing()
                 @history.each {|bet| puts "#{bet[:gamble_money]} #{bet[:@bank_balance]}"}
             end
@@ -114,14 +116,22 @@ class Play
             if random_number <= 20
                 win = medium_win_calculate(gamble_money)
                 @bank_balance += win
-                puts "You won #{win}!"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "You won #{win}!".green
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "Your lucky, you only had a 20% chance of winning!"
+                play = keep_playing()
             else
                 @bank_balance -= gamble_money
-                puts "you lost #{gamble_money}"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "you lost $#{gamble_money}".red
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "On the Medium level, you were disadvantaged to win with a 80% chance of losing."
+                play = keep_playing()
             end
         elsif difficulty_choice == "H"
             random_number = rand(1..100)
@@ -129,14 +139,22 @@ class Play
             if random_number <= 10
                 win = hard_win_calculate(gamble_money)
                 @bank_balance += win
-                puts "You won #{win}!"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "You won #{win}!".green
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "Your lucky, you only had a 10% chance of winning!"
+                play = keep_playing()
             else
                 @bank_balance -= gamble_money
-                puts "you lost #{gamble_money}"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "you lost $#{gamble_money}".red
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "On the Hard level, you were disadvantaged to win with a 90% chance of losing."
+                play = keep_playing()
             end
         elsif difficulty_choice == "V"
             random_number = rand(1..100)
@@ -144,17 +162,25 @@ class Play
             if random_number <= 5
                 win = very_hard_win_calculate(gamble_money)
                 @bank_balance += win
-                puts "You won #{win}!"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "You won #{win}!".green
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "Your lucky, you only had a 5% chance of winning!"
+                v
 
         # elsif difficulty_choice == "H"
         #     show = history()
             else
                 @bank_balance -= gamble_money
-                puts "you lost #{gamble_money}"
+                @history.push(bet: gamble_money, balance: @bank_balance)
+                puts Optics.bold
+                puts "you lost $#{gamble_money}".red
+                puts Optics.reset
                 puts "Your bank balance is now $#{@bank_balance}"
                 puts "On the Very Hard level, you were disadvantaged to win with a 95% chance of losing."
+                play = keep_playing()
             end
         end
         

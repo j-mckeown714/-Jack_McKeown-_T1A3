@@ -4,15 +4,21 @@ require ('optics')
 
 class Menu
     def initialize
+        @option = nil
+    end
+    
+    def get_input
+        @option = gets.chomp.upcase
+        return @option
+
     end
 
-    def menu_options # Gets valid menu option
-        option = gets.chomp.upcase
-        while option != "O" and option != "P" and option != "Q" and option != "T" and option != "D"
+    def menu_options(get_input) # Gets valid menu option
+        while @option != "O" and @option != "P" and @option != "Q" and @option != "T" and @option != "D"
             puts "Invalid Input"
-            option = gets.chomp.upcase
+            get_input()
         end
-        return option
+        return @option
 
     end
 
@@ -25,7 +31,7 @@ class Menu
         puts "(T)est"
         puts "(D)isclaimer"
         puts "(Q)uit"
-        input = menu_options()
+        input = menu_options(get_input)
         return input
     end
 
