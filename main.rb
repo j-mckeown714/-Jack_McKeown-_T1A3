@@ -16,7 +16,7 @@ while choice != "Q"
         bank = new_game.money()
         difficulty_choice = new_game.difficulty
         gamble = new_game.gamble(difficulty_choice)
-    elsif choice == "I"
+    elsif choice == "O"
         new_menu.opening_message()
     elsif choice == "T"
         new_test = Test.new
@@ -24,7 +24,7 @@ while choice != "Q"
     elsif choice == "D"
         disclaimer = new_menu.disclaimer()
 
-        history = new_menu.history
+
     
     end
     choice = new_menu.main_menu()

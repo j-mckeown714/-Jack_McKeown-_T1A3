@@ -9,7 +9,7 @@ class Test
     def valid_test_input
         input = gets.strip.to_i
         while input != 0 and input != 1 and input != 2 and input != 3 and input != 4 and input != 5
-            puts "Invalid input"
+            puts "Invalid input, try again"
             input = gets.strip.to_i
         end
         return input
@@ -58,10 +58,10 @@ class Test
         input = valid_test_input()
         score += input
 
-        if score <= 5
+        if score <= 10
             puts "Not critical. See an professtional if gambing abuse symtons worsen"
             puts ""
-        elsif score > 6 and score < 15
+        elsif score > 11 and score < 18
             puts "Your showing symtons of gambling abuse. See attention from a gambling support professtional"
             puts ""
         else

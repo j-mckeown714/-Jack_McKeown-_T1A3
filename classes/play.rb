@@ -34,8 +34,8 @@ class Play
     def money
         puts "How much money do you want in your gambling account?"
         balance = gets.chomp.to_f
-        while balance < 0
-            puts "Can't be negitive number"
+        while balance <= 0
+            puts "Can't be 0 or a  negitive number, input again"
             balance = gets.chomp.to_f
         end
         @bank_balance = balance
@@ -110,11 +110,13 @@ class Play
         
         puts "How much money do you want to gamble?"
         gamble_money = gets.strip.to_f
-        while gamble_money > @bank_balance or @bank_balance == 0 
-            puts "You can't gamble more then you have"
+        while gamble_money > @bank_balance or @bank_balance == 0 or gamble_money <=0
+            # puts "Bet can't be equal or less then 0"
+            puts "You can't gamble more then you have and the bet has to be greater then 0"
             puts "How much money do you want to gamble?"
         gamble_money = gets.strip.to_f
         end
+
         if difficulty_choice == "E"
             random_number = rand(1..100)
             if random_number <= 40
@@ -155,10 +157,5 @@ class Play
                 loss_display(win, gamble_money)
             end
         end
-        
-        
-            
     end
-    
-
 end
